@@ -28,35 +28,35 @@ public class SpringConfig
         this.applicationContext = applicationContext;
     }
 
-    @Bean
+ /*   @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/jsp/");
         templateResolver.setSuffix(".html");
         return templateResolver;
-    }
-  /*  @Bean
+    }*/
+    @Bean
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setApplicationContext(applicationContext);
         bean.setPrefix("/WEB-INF/jsp/");
         bean.setSuffix(".jsp");
         return bean;
-    }*/
+    }
 
-    @Bean
+    /*@Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
-    }
+    }*/
 }
