@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AccountPage</title>
+</head>
+<body>
+<p th:text="${account.getId()}"> Accounts id is</p>
+<p th:each=" accountType : ${account.getAccountTypeList()}"
+   th:text="${#strings.capitalize(#strings.toLowerCase(accountType))}">Type of account</p>
+
+<form th:action="@{/account}" method="post" th:object="${account}">
+    <label for="id">Id</label>
+    <input type="text" th:field="*{id}" id="id"/><br>
+    <label for="active">Active: </label>
+    <input type="checkbox" th:field="*{active}" id="active"/>
+
+    <ul style="list-style: none">
+        <li th:each="type : ${accountTypes}">
+            <label>
+                <input type="checkbox" th:value="${type}" th:field="*{accountTypeList}">
+            </label>
+            <span th:text="${#strings.capitalize(#strings.toLowerCase(type))}"></span>
+        </li>
+    </ul>
+    <button type="submit">Save account</button>
+</form>
+
+<p th:if="${!account.active}">павпавпв</p>
+
+</body>
+</html>
